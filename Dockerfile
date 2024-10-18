@@ -1,7 +1,5 @@
-FROM jenkins/jenkins:lts-jdk17
+FROM openjdk:17-jdk-alpine
 
-USER root
+COPY ./target/dockerdemo1-0.0.1-SNAPSHOT.jar springdockerimg.jar
 
-RUN curl -sSL https://get.docker.com/ | sh
-
-USER jenkins
+ENTRYPOINT ["java" ,"-jar","/springdockerimg.jar"]
